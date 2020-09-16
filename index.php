@@ -3,10 +3,11 @@
     include 'resultsDisplay.php'; //include the resultsDisplay file for the geturlcode() and getHits() functions 
     include 'formfiller.php'; // include the formfiller file for the formplaceholder() function
 ?>
-<form action="urlshortener.php" method="POST" name="url_input" onsubmit="return validateForm()"> <!-- links to the js validation function on submit-->
+<form action="urlshortener.php" method="POST" name="url_input" onsubmit="return validateForm();"> <!-- links to the js validation function on submit-->
     <p>Enter your Url:</p>
-    <input type="text" placeholder="<?php formplaceholder($conn); ?>" name="orig_url"><br> <!-- calls the formplaceholder function -->
+    <input type="text" placeholder="<?php formplaceholder($conn); ?>" name="orig_url" onkeyup="showHint(this.value)"><br> <!-- calls the formplaceholder function -->
     <p class="error" id="error"></p> <!-- this p tag is populated when a validation error is caught-->
+    <p class="error" id="txtHint"></p>
     <input type="submit" value="Shorten">
 </form>
 <?php geturlcode(); ?> <!-- displays the new the short url with a link to it  -->
